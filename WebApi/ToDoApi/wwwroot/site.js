@@ -31,6 +31,16 @@ function getData() {
 
             $.each(data, function (key, item) {
                 const tr = $("<tr></tr>")
+                    .append(
+                        $().append(
+                            $("<input/>", {
+                                type: "checkbox",
+                                disabled: true,
+                                checked: item.isAvalible
+                            })
+                        )
+                    ) 
+
                     .append($("<td></td>").text(item.id))
                     .append($("<td></td>").text(item.name))
                     .append(
@@ -47,7 +57,6 @@ function getData() {
                             })
                         )
                     )
-                    
                     .append($("<td></td>").text(item.capacity))
                     .append($("<td></td>").text(item.isAvalible))
 
@@ -55,14 +64,6 @@ function getData() {
             });
 
             todos = data;
-            
-            var x = document.getElementsByTagName("tr");
-            var txt = "";
-            var i;
-            for (i = 0; i < x.length; i++) {
-                txt = txt + "The index of Row " + (i + 1) + " is: " + x[i].rowIndex + "<br>";
-             
-            }
         }
     });
 }
@@ -120,7 +121,7 @@ $(".my-form").on("submit", function () {
     const item = {
         name: $("#edit-name").val(),
         capacity: $("#edit-capacity").val(),
-        isAvalible: $("#edit-isAvalible").is(":unchecked"),
+        isAvalible: $("#edit-isAvalible").is(":checked"),
         id: $("#edit-id").val()
     };
 
