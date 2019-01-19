@@ -1,5 +1,5 @@
 # .NET-WebApi-
-drugie zadnie
+Intive/Zadanie2
 
 Jeżeli testujemy FizzBuzzApi, które odpytuje drugie Api to należy oba projekty odpalić razem(multiple startup projects)
 
