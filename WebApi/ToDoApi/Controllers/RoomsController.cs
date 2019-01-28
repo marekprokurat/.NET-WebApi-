@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TodoApi.Models;
 using Microsoft.EntityFrameworkCore;
-
-
-
 
 namespace TodoApi.Controllers
 {
@@ -27,15 +23,15 @@ namespace TodoApi.Controllers
                 _context.SaveChanges();
             }
         }
-            // GET: api/Todo
 
+        // GET: 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Room>>> GetRooms()
         {
             return await _context.Rooms.ToListAsync();
         }
 
-        // GET: api/Todo/5
+        // GET /id: 
         [HttpGet("{id}")]
         public async Task<ActionResult<Room>> GetRoom(long id)
         {
@@ -49,7 +45,7 @@ namespace TodoApi.Controllers
             return room;
         }
 
-        // POST: api/Todo
+        // POST: 
         [HttpPost]
         public async Task<ActionResult<Room>> PostRoom(Room room)
         {
@@ -59,7 +55,7 @@ namespace TodoApi.Controllers
             return CreatedAtAction("GetRoom", new { id = room.Id }, room);
         }
 
-        // PUT: api/Todo/5
+        // PUT: 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRoom(long id, Room room)
         {
@@ -74,7 +70,7 @@ namespace TodoApi.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Todo/5
+        // DELETE: 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Room>> DeleteRoom(long id)
         {
@@ -89,8 +85,6 @@ namespace TodoApi.Controllers
 
             return room;
         }
-
-
     }
     } 
     

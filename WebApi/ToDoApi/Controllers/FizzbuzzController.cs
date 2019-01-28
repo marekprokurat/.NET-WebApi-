@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TodoApi.Controllers
@@ -9,7 +7,7 @@ namespace TodoApi.Controllers
     [Route("api/[controller]")]
     public class FizzbuzzController : Controller
     {
-        // GET: api/<controller>
+        // GET: api/fizzbuzz?number=
         [HttpGet]
         public IEnumerable<string> Get()
   
@@ -18,27 +16,22 @@ namespace TodoApi.Controllers
             int num=0;
             string g="";
 
-           
-            
             if ( !string.IsNullOrEmpty(HttpContext.Request.Query["number"] ) )
                 {
                 try
                 {
                     num = int.Parse(number);
                 }
-                catch (Exception) //(Exception e)
+                catch (Exception) 
                 {
-                    
                     return new string[] { "Niepoprawny format wejsciowy. Podaj liczbe 1-1000" };
                 }
-
 
 
                 if (num >= 0 && num <= 1000)
                 {
                     g = num % 6 == 0 ? "Fizz Buzz" : (num % 2 == 0 ? "Fizz" : (num % 3 == 0 ? "Buzz" : num.ToString()));
                     return new string[] { g };
-                   
                 }
 
                 else
@@ -55,33 +48,5 @@ namespace TodoApi.Controllers
            
         }
 
-           
-
-        [HttpGet("fizzbuzz")]
-        // GET api/<controller>/5
-
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "ffdfdfs";
-        }
-
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
